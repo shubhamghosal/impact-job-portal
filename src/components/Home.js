@@ -69,8 +69,9 @@ export default class Home extends Component {
               <br />
               <Button variant="success" href={`candidate/${items.findIndex(item => item.name === searchName) + 1001}`}>Search</Button>{' '}
             </div>
+            <br />
+            <b>Note: <u>Scroll bottom to check all candidate's shortlisting/rejection status</u></b>
           </div>
-
         </div>
         <br />
         <div className='mini-card'>
@@ -99,7 +100,6 @@ export default class Home extends Component {
           <Button variant="danger" href="/rejected">Rejected Candidates</Button>{' '}
           <br />
         </div>
-
       </div>
     )
   }

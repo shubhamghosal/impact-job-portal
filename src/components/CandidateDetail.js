@@ -11,7 +11,7 @@ export default class CandidateDetail extends Component {
         this.state = {
             items: [],
             selectedCandidate: [],
-            rejectedCandidate: []
+            rejectedCandidate: [],
         };
     }
 
@@ -28,20 +28,42 @@ export default class CandidateDetail extends Component {
     }
 
     onSelectCandidate() {
-        const selectedCandidate = [];
+        var selectedCandidate = JSON.parse(localStorage.getItem('selectedCandidate'));
 
-        localStorage.setItem('selectedCandidate', selectedCandidate.push(this.state.items));
+        if (selectedCandidate === null) {
+            selectedCandidate = [];
+            selectedCandidate.push(this.state.items);
+            localStorage.setItem('selectedCandidate', JSON.stringify(selectedCandidate));
+        } else {
+            if (selectedCandidate.find(x => x.id === this.state.items.id)) {
+                alert("Candidate Already Selected");
+            } else {
+                selectedCandidate.push(this.state.items);
+                localStorage.setItem('selectedCandidate', JSON.stringify(selectedCandidate));
+            }
+        }
 
-        console.log(selectedCandidate);
+        console.log(localStorage.getItem('selectedCandidate'));
 
     }
 
     onRejectCandidate() {
-        const rejectedCandidate = [];
+        var rejectedCandidate = JSON.parse(localStorage.getItem('rejectedCandidate'));
 
-        localStorage.setItem('rejectedCandidate', rejectedCandidate.push(this.state.items));
+        if (rejectedCandidate === null) {
+            rejectedCandidate = [];
+            rejectedCandidate.push(this.state.items);
+            localStorage.setItem('rejectedCandidate', JSON.stringify(rejectedCandidate));
+        } else {
+            if (rejectedCandidate.find(x => x.id === this.state.items.id)) {
+                alert("Candidate Already Rejected");
+            } else {
+                rejectedCandidate.push(this.state.items);
+                localStorage.setItem('rejectedCandidate', JSON.stringify(rejectedCandidate));
+            }
+        }
 
-        console.log(rejectedCandidate);
+        console.log(localStorage.getItem('rejectedCandidate'));
     }
 
     render() {
