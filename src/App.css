@@ -100,3 +100,8 @@
   width: 50%;
   margin: auto;
 }
+
+.msg-display {
+  color: red;
+  text-decoration: underline;
+}

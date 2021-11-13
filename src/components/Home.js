@@ -11,6 +11,7 @@ export default class Home extends Component {
     this.state = {
       items: [],
       searchName: "",
+      message: "",
       DataisLoaded: false
     };
   }
@@ -33,10 +34,26 @@ export default class Home extends Component {
     this.setState({
       searchName: searchName,
     });
+
+    if (searchName === "" || searchName === null) {
+      this.setState({
+        message: "Please enter a valid name"
+      });
+    }
+    else if (this.state.items.findIndex(item => item.name === searchName) === -1) {
+      this.setState({
+        message: "No such candidate found"
+      });
+    }
+    else {
+      this.setState({
+        message: "Candidate Found!!! Click on Search."
+      });
+    }
   }
 
   render() {
-    const { DataisLoaded, items, searchName } = this.state;
+    const { DataisLoaded, items, searchName, message } = this.state;
     if (!DataisLoaded)
       return <div><h1> Loading!!! Please wait for some time.... </h1> </div>;
     return (
@@ -47,6 +64,7 @@ export default class Home extends Component {
           <br />
           <div>
             <Input type="text" placeholder="Enter Candidate's Full Name..." onChange={this.onChangeSearchName} className='search-name' />
+            <span className='msg-display'>{message}</span>
             <div>
               <br />
               <Button variant="success" href={`candidate/${items.findIndex(item => item.name === searchName) + 1001}`}>Search</Button>{' '}
