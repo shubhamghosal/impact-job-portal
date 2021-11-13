@@ -18,6 +18,16 @@ class HeaderNavbar extends Component {
                             </Link>
                         </li>
                         <li className="nav-item">
+                            <Link to={"/shortlisted"} className="nav-link">
+                                Shortlisted
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to={"/rejected"} className="nav-link">
+                                Rejected
+                            </Link>
+                        </li>
+                        <li className="nav-item">
                             <Link to={"/about"} className="nav-link">
                                 About Us
                             </Link>
