@@ -12,7 +12,7 @@ export default class ShortlistedCandidates extends Component {
 
     componentDidMount() {
         this.setState({
-            items: JSON.parse(localStorage.getItem('selectedCandidate'))
+            items: JSON.parse(sessionStorage.getItem('selectedCandidate'))
         });
     }
 

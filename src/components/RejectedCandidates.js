@@ -12,7 +12,7 @@ export default class RejectedCandidates extends Component {
 
     componentDidMount() {
         this.setState({
-            items: JSON.parse(localStorage.getItem('rejectedCandidate'))
+            items: JSON.parse(sessionStorage.getItem('rejectedCandidate'))
         });
     }
 

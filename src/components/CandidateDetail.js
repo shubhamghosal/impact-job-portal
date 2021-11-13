@@ -28,42 +28,42 @@ export default class CandidateDetail extends Component {
     }
 
     onSelectCandidate() {
-        var selectedCandidate = JSON.parse(localStorage.getItem('selectedCandidate'));
+        var selectedCandidate = JSON.parse(sessionStorage.getItem('selectedCandidate'));
 
         if (selectedCandidate === null) {
             selectedCandidate = [];
             selectedCandidate.push(this.state.items);
-            localStorage.setItem('selectedCandidate', JSON.stringify(selectedCandidate));
+            sessionStorage.setItem('selectedCandidate', JSON.stringify(selectedCandidate));
         } else {
             if (selectedCandidate.find(x => x.id === this.state.items.id)) {
                 alert("Candidate Already Selected");
             } else {
                 selectedCandidate.push(this.state.items);
-                localStorage.setItem('selectedCandidate', JSON.stringify(selectedCandidate));
+                sessionStorage.setItem('selectedCandidate', JSON.stringify(selectedCandidate));
             }
         }
 
-        console.log(localStorage.getItem('selectedCandidate'));
+        console.log(sessionStorage.getItem('selectedCandidate'));
 
     }
 
     onRejectCandidate() {
-        var rejectedCandidate = JSON.parse(localStorage.getItem('rejectedCandidate'));
+        var rejectedCandidate = JSON.parse(sessionStorage.getItem('rejectedCandidate'));
 
         if (rejectedCandidate === null) {
             rejectedCandidate = [];
             rejectedCandidate.push(this.state.items);
-            localStorage.setItem('rejectedCandidate', JSON.stringify(rejectedCandidate));
+            sessionStorage.setItem('rejectedCandidate', JSON.stringify(rejectedCandidate));
         } else {
             if (rejectedCandidate.find(x => x.id === this.state.items.id)) {
                 alert("Candidate Already Rejected");
             } else {
                 rejectedCandidate.push(this.state.items);
-                localStorage.setItem('rejectedCandidate', JSON.stringify(rejectedCandidate));
+                sessionStorage.setItem('rejectedCandidate', JSON.stringify(rejectedCandidate));
             }
         }
 
-        console.log(localStorage.getItem('rejectedCandidate'));
+        console.log(sessionStorage.getItem('rejectedCandidate'));
     }
 
     render() {
