@@ -60,8 +60,8 @@ export default class CandidateDetail extends Component {
                     </div>
                 </div>
                 <br />
-                <Button variant="success" onClick={this.onSelectCandidate}>Shortlist</Button>{' '}
-                <Button variant="danger" onClick={this.onRejectCandidate}>Reject</Button>{' '}
+                <Button variant="success" href="/home" onClick={this.onSelectCandidate}>Shortlist</Button>{' '}
+                <Button variant="danger" href="/home" onClick={this.onRejectCandidate}>Reject</Button>{' '}
             </div >
         )
     }
