@@ -10,8 +10,8 @@ export default class CandidateDetail extends Component {
 
         this.state = {
             items: [],
-            selectedCandidate: "",
-            rejectedCandidate: ""
+            selectedCandidate: [],
+            rejectedCandidate: []
         };
     }
 
@@ -21,25 +21,27 @@ export default class CandidateDetail extends Component {
             .then((res) => res.json())
             .then((json) => {
                 this.setState({
-                    items: json[this.props.match.params.id - 1001]
+                    items: json[this.props.match.params.id - 1001],
                 });
                 console.log(json);
             })
     }
 
     onSelectCandidate() {
-        const selectedCandidate = this.props.match.params.id;
+        const selectedCandidate = [];
 
-        this.setState({
-            selectedCandidate: selectedCandidate
-        });
+        localStorage.setItem('selectedCandidate', selectedCandidate.push(this.state.items));
+
+        console.log(selectedCandidate);
+
     }
 
     onRejectCandidate() {
-        const rejectedCandidate = this.props.match.params.id;
-        this.setState({
-            rejectedCandidate: rejectedCandidate
-        });
+        const rejectedCandidate = [];
+
+        localStorage.setItem('rejectedCandidate', rejectedCandidate.push(this.state.items));
+
+        console.log(rejectedCandidate);
     }
 
     render() {
@@ -58,8 +60,8 @@ export default class CandidateDetail extends Component {
                     </div>
                 </div>
                 <br />
-                <Button variant="success" href="/home" onClick={this.onSelectCandidate}>Shortlist</Button>{' '}
-                <Button variant="danger" href="/home" onClick={this.onRejectCandidate}>Reject</Button>{' '}
+                <Button variant="success" onClick={this.onSelectCandidate}>Shortlist</Button>{' '}
+                <Button variant="danger" onClick={this.onRejectCandidate}>Reject</Button>{' '}
             </div >
         )
     }

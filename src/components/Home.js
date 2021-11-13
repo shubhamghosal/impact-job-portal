@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Button } from 'react-bootstrap';
+import { Input } from 'reactstrap';
 
 export default class Home extends Component {
 
@@ -45,7 +46,7 @@ export default class Home extends Component {
           <h1 className='header-main'><u> Search by Candidate Name </u></h1>
           <br />
           <div>
-            <input type="text" placeholder="Enter Full Name..." onChange={this.onChangeSearchName} />
+            <Input type="text" placeholder="Enter Candidate's Full Name..." onChange={this.onChangeSearchName} className='search-name' />
             <div>
               <br />
               <Button variant="success" href={`candidate/${items.findIndex(item => item.name === searchName) + 1001}`}>Search</Button>{' '}

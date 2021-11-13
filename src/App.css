@@ -95,3 +95,8 @@
   text-align: center;
   color: black;
 }
+
+.search-name {
+  width: 50%;
+  margin: auto;
+}
