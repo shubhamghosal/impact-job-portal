@@ -74,7 +74,7 @@ export default class Home extends Component {
               <br />
               {items.find(x => x.name === searchName) ? (
                 <div>
-                  <Button variant="success" href={`candidate/${items.findIndex(item => item.name === searchName) + 1001}`}>Search</Button>{' '}
+                  <Button variant="success" href={`candidate/${items[items.findIndex(item => item.name === searchName)].id}`}>Search</Button>{' '}
                 </div>
               ) : (
                 <div>
