@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { Input } from 'reactstrap';
 
@@ -7,6 +7,7 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
     this.onChangeSearchName = this.onChangeSearchName.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
 
     this.state = {
       items: [],
@@ -52,6 +53,10 @@ export default class Home extends Component {
     }
   }
 
+  handleSearch() {
+    alert("Please enter a valid name before searching");
+  }
+
   render() {
     const { DataisLoaded, items, searchName, message } = this.state;
     if (!DataisLoaded)
@@ -67,7 +72,15 @@ export default class Home extends Component {
             <span className='msg-display'>{message}</span>
             <div>
               <br />
-              <Button variant="success" href={`candidate/${items.findIndex(item => item.name === searchName) + 1001}`}>Search</Button>{' '}
+              {items.find(x => x.name === searchName) ? (
+                <div>
+                  <Button variant="success" href={`candidate/${items.findIndex(item => item.name === searchName) + 1001}`}>Search</Button>{' '}
+                </div>
+              ) : (
+                <div>
+                  <Button variant="success" onClick={this.handleSearch}>Search</Button>{' '}
+                </div>
+              )}
             </div>
             <br />
             <b>Note: <u>Scroll bottom to check all candidate's shortlisting/rejection status</u></b>
