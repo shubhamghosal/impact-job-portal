@@ -78,7 +78,7 @@ export default class Home extends Component {
                 </div>
               ) : (
                 <div>
-                  <Button variant="success" onClick={this.handleSearch}>Search</Button>{' '}
+                  <Button variant="success" href="/home" onClick={this.handleSearch}>Search</Button>{' '}
                 </div>
               )}
             </div>
