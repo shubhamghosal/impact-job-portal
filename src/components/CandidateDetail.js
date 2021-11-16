@@ -21,9 +21,9 @@ export default class CandidateDetail extends Component {
             .then((res) => res.json())
             .then((json) => {
                 this.setState({
-                    items: json[this.props.match.params.id - 1001],
+                    items: json[json.findIndex(x => x.id === this.props.match.params.id)],
                 });
-                console.log(json);
+                console.log(json[json.findIndex(x => x.id === this.props.match.params.id)]);
             })
     }
 
